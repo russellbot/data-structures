@@ -18,7 +18,7 @@ class Stack {
   
     push(value){
         let newNode = new Node(value);
-        if (!this.top) {
+        if (this.length === 0) {
             this.top = newNode;
             this.bottom = newNode;
         } else if (this.length === 1) {
@@ -37,6 +37,7 @@ class Stack {
         } else {
             this.top = this.top.next;
         }
+        this.length--;
     }
   
     isEmpty() {
