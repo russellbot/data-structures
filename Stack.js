@@ -29,15 +29,20 @@ class Stack {
             this.top = newNode;
         }
         this.length++;
+        return this;
     }
   
     pop(){
-        if (this.isEmpty()) {
+        if (!this.top) {
             return 'Stack is Empty';
-        } else {
-            this.top = this.top.next;
+        } 
+        if (this.top === this.bottom) {
+            this.bottom = null;
         }
+        this.top = this.top.next;
         this.length--;
+        return this;
+        
     }
   
     isEmpty() {
