@@ -25,7 +25,8 @@ class Stack {
             this.bottom = this.top;
             this.top = newNode;
         } else {
-            newNode.next = this.top
+            newNode.next = this.top;
+            this.top = newNode;
         }
         this.length++;
     }
