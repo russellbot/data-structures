@@ -42,7 +42,20 @@ class BinarySearchTree {
   }
   
   lookup(value){
-    //Code here
+    if(!this.root) {
+      return false;
+    }
+    let currentNode = this.root;
+    while(currentNode) {
+      if (value === currentNode.value) {
+        return currentNode;
+      } else if (value < currentNode.value) {
+        currentNode = currentNode.left;
+      } else if (value > currentNode.value) {
+        currentNode = currentNode.right;
+      }
+    }
+    return false;
   }
   // remove
 }
