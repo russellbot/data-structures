@@ -5,10 +5,11 @@ function mergeSort (array) {
     return array
   }
   // Split Array in into right and left
-  let firstHalf = Math.ceil((array.length)/2);
-  let left = array.splice(0, firstHalf);
-  let right = array;
-  console.log(left, right);
+  const length = array.length;
+  const middle = Math.floor(length / 2);
+  const left = array.slice(0, middle);
+  const right = array.slice(middle);
+  // console.log(left, right);
   return merge(
     mergeSort(left),
     mergeSort(right)
@@ -16,22 +17,19 @@ function mergeSort (array) {
 }
 
 function merge(left, right){
-  if (left.length === 0) {
-    return right;
-  } else if (right.length === 0) {
-    return left;
-  }
   let newArray = [];
-  while(left.length > 0 || right.length > 0) {
-    if (left[0] < right[0]) {
-      newArray.push(left[0]);
-      left.shift();
+  let leftIndex = 0;
+  let rightIndex = 0;
+  while(leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      newArray.push(left[leftIndex]);
+      leftIndex++;
     } else {
-      newArray.push(right[0]);
-      right.shift();
+      newArray.push(right[rightIndex]);
+      rightIndex++;
     }
   }
-  return newArray;
+  return newArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
 
 // const arr1 = [1,2,6,8];
