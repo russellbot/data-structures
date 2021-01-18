@@ -18,6 +18,15 @@ function fibonacci() {
   }
 }
 
+function fibonacciMaster2(n) {
+    let answer = [0, 1];
+    for (let i = 2; i<=n; i++) {
+        answer.push(answer[i-2] + answer[i-1]);
+    }
+    return answer.pop();
+}
+
 const fasterFib = fibonacci();
 console.log('DP', fasterFib(35));
 console.log('we did ' + calculations + ' calculations');
+console.log('DP2', fibonacciMaster2(35));
